@@ -15,7 +15,7 @@ import java.util.List;
 @Entity
 public class Library {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     public int id;
     @ColumnInfo(name = "library_name")
     public String name;
