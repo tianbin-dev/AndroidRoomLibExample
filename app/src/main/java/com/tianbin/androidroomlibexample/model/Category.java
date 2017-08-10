@@ -2,19 +2,29 @@ package com.tianbin.androidroomlibexample.model;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
+
+import java.util.List;
 
 /**
  * Category
  * Created by tianbin on 2017/8/9.
  */
-@Entity
+@Entity(foreignKeys = @ForeignKey(entity = Library.class, parentColumns = "id", childColumns = "library_id"),
+        indices = {@Index(value = "library_id", unique = true)})
 public class Category {
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     public int id;
     @ColumnInfo(name = "category_name")
     public String name;
+    @ColumnInfo(name = "library_id")
+    public int libraryId;
 
-    //public List<Book> mBooks;
+    @Ignore
+    public List<Book> mBooks;
+
 }
