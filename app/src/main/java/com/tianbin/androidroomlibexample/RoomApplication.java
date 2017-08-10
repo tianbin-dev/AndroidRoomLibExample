@@ -3,7 +3,6 @@ package com.tianbin.androidroomlibexample;
 import android.app.Application;
 
 import com.facebook.stetho.Stetho;
-import com.tianbin.androidroomlibexample.database.DatabaseManager;
 
 /**
  * RoomApplication
@@ -16,6 +15,5 @@ public class RoomApplication extends Application {
         super.onCreate();
 
         Stetho.initializeWithDefaults(this);
-        DatabaseManager.initInstance(getApplicationContext());
     }
 }
