@@ -2,6 +2,7 @@ package com.tianbin.androidroomlibexample;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Room;
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
@@ -50,14 +51,8 @@ public class LibraryDaoTest {
 
     @Before
     public void createDb() {
-        //Context context = InstrumentationRegistry.getTargetContext();
-        //mDb = Room.inMemoryDatabaseBuilder(context, LibraryDatabase.class).build();
-        mDb = Room.inMemoryDatabaseBuilder(
-                InstrumentationRegistry.getContext(),
-                LibraryDatabase.class)
-                // allowing main thread queries, just for testing
-                .allowMainThreadQueries()
-                .build();
+        Context context = InstrumentationRegistry.getTargetContext();
+        mDb = Room.inMemoryDatabaseBuilder(context, LibraryDatabase.class).build();
 
         mLibraryDao = mDb.libraryDao();
         mCategoryDao = mDb.categoryDao();
