@@ -1,6 +1,9 @@
 package com.tianbin.androidroomlibexample.dao;
 
 import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Insert;
+
+import com.tianbin.androidroomlibexample.model.Book;
 
 /**
  * BookDao
@@ -9,4 +12,6 @@ import android.arch.persistence.room.Dao;
 @Dao
 public interface BookDao {
 
+    @Insert
+    long[] insert(Book... books);
 }

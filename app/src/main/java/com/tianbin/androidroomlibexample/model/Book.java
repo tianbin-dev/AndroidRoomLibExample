@@ -16,7 +16,6 @@ public class Book {
 
     @PrimaryKey
     public int id;
-    @ColumnInfo(name = "book_name")
     public String name;
     public String author;
     @ColumnInfo(name = "category_id")
