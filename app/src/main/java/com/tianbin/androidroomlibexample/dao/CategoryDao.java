@@ -1,9 +1,13 @@
 package com.tianbin.androidroomlibexample.dao;
 
 import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.Query;
 
 import com.tianbin.androidroomlibexample.model.Category;
+
+import java.util.List;
 
 /**
  * CategoryDao
@@ -14,4 +18,10 @@ public interface CategoryDao {
 
     @Insert
     long[] insert(Category... categories);
+
+    @Query("SELECT * FROM category")
+    List<Category> query();
+
+    @Delete
+    int delete(Category... categories);
 }

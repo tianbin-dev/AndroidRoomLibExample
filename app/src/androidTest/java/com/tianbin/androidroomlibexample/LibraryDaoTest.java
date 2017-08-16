@@ -103,14 +103,16 @@ public class LibraryDaoTest {
     @Test
     public void deleteLibrary() throws Exception {
 
-        final Library library = createLibrary();
-        mLibraryDao.insert(library);
+        initData();
 
         final List<Library> libraries = mLibraryDao.query();
         mLibraryDao.delete(libraries.get(0));
 
         final List<Library> query = mLibraryDao.query();
         assertThat(query, IsEmptyIterable.<Library>emptyIterable());
+
+        final List<Category> categoryList = mCategoryDao.query();
+        assertThat(categoryList, IsEmptyIterable.<Category>emptyIterable());
     }
 
     @Test

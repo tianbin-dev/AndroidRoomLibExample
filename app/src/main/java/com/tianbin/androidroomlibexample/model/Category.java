@@ -9,11 +9,13 @@ import android.arch.persistence.room.PrimaryKey;
 
 import java.util.List;
 
+import static android.arch.persistence.room.ForeignKey.CASCADE;
+
 /**
  * Category
  * Created by tianbin on 2017/8/9.
  */
-@Entity(foreignKeys = @ForeignKey(entity = Library.class, parentColumns = "id", childColumns = "library_id"),
+@Entity(foreignKeys = @ForeignKey(entity = Library.class, parentColumns = "id", childColumns = "library_id", onDelete = CASCADE),
         indices = {@Index(value = "library_id", unique = true)})
 public class Category {
 
