@@ -10,6 +10,7 @@ import android.database.Cursor;
 
 import com.tianbin.androidroomlibexample.model.Library;
 import com.tianbin.androidroomlibexample.model.LibraryAddressName;
+import com.tianbin.androidroomlibexample.model.LibraryCategoryBook;
 
 import java.util.List;
 
@@ -60,4 +61,7 @@ public interface LibraryDao {
             + "INNER JOIN book ON book.category_id = category.id "
             + "WHERE book.name LIKE :bookName")
     Library findLibraryByBookName(String bookName);
+
+    @Query("SELECT * FROM library")
+    List<LibraryCategoryBook> queryByRelation();
 }

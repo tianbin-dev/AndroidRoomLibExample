@@ -28,5 +28,4 @@ public class Category {
 
     @Ignore
     public List<Book> mBooks;
-
 }

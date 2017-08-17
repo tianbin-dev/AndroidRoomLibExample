@@ -16,6 +16,7 @@ import com.tianbin.androidroomlibexample.model.Book;
 import com.tianbin.androidroomlibexample.model.Category;
 import com.tianbin.androidroomlibexample.model.Library;
 import com.tianbin.androidroomlibexample.model.LibraryAddressName;
+import com.tianbin.androidroomlibexample.model.LibraryCategoryBook;
 
 import org.hamcrest.collection.IsEmptyIterable;
 import org.junit.After;
@@ -225,5 +226,13 @@ public class LibraryDaoTest {
         mBookDao.insert(book);
 
         return library;
+    }
+
+    @Test
+    public void queryByRelation() throws Exception {
+        initData();
+
+        final List<LibraryCategoryBook> libraryCategoryBooks = mLibraryDao.queryByRelation();
+        assertThat(libraryCategoryBooks.get(0).library.name, equalTo("library 1"));
     }
 }
